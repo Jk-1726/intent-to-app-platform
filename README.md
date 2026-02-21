@@ -75,14 +75,14 @@ Session creation:
 ![image alt](https://github.com/Jk-1726/intent-to-app-platform/blob/fe9316d9614ad951f3da1724133ad59665bbb18b/session-created.png.png)
 
 Browser connection:
-```md
-![Browser Access](demo/2_browser_access.png)
-```
+
+![Browser Access](https://github.com/Jk-1726/intent-to-app-platform/blob/9a2812d4125355617856d2679e24e0546339adbb/session-before.png.png)
+
 
 Remote GUI interaction:
-```md
-![Running App](demo/3_running_app.png)
-```
+
+![Running App]()
+
 
 ---
 
