@@ -84,6 +84,10 @@ Remote GUI interaction:
 ![Running App](https://github.com/Jk-1726/intent-to-app-platform/blob/115aef45cac8e0660b8a9333d2400bd67acb2e1b/container-running.png.png)
 
 
+noVNC Browser interface:
+
+![noVNC Browser](https://github.com/Jk-1726/intent-to-app-platform/blob/f9921d8702f66ca0c34b62007b9d032ddffcaf94/noVNC-localhost%20browser.png.png)
+
 ---
 
 ## Running
