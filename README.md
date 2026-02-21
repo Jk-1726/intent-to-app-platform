@@ -1,118 +1,162 @@
 # Intent-to-App Platform (Prototype)
+Remote GUI Session Orchestration over HTTP
 
-Lightweight prototype that launches an isolated Linux GUI session on demand and streams it to a browser using container orchestration concepts.
-
-This project demonstrates the **core execution flow of remote application streaming**, not a full cloud platform.
-
----
-
-## What This Proves
-
-Instead of installing applications locally, a user can request a session and interact with a remote GUI environment running inside a container.
-
-Flow:
-
-User → API request → container created → port assigned → browser connects → GUI streamed
-
-This is the same fundamental model used by remote desktops, cloud IDEs, and application streaming platforms.
+Author: Jayakumar M
 
 ---
 
-## Architecture Overview
+## What This Repository Is
 
-FastAPI acts as the session orchestrator.
+A minimal runtime that launches an isolated Linux graphical environment on demand and exposes it inside a web browser.
 
-It:
-- receives a session request
-- starts a container
-- maps a dynamic port
-- exposes GUI via noVNC
+The backend acts as a session orchestrator:
+it receives a request → creates an execution environment → publishes a connection endpoint → user interacts with remote software.
 
-Each request produces an isolated runtime environment.
+This demonstrates the core mechanism used by remote desktops, browser IDEs and application streaming systems.
 
----
-
-## Execution Flow
-
-1. Client sends session request
-2. Backend creates container
-3. Container exposes VNC server
-4. noVNC bridges VNC → WebSocket
-5. Browser renders GUI
+This is a prototype of the orchestration layer, not a full cloud service.
 
 ---
 
-## Demo (Actual Runtime)
+## Problem It Demonstrates
 
-### 1 — Session Creation
+Local installation couples software to hardware.
+
+This system decouples them:
+
+client device → only displays pixels  
+server → executes the application
+
+The browser becomes a terminal for a remote operating system.
+
+---
+
+## Runtime Flow
+
+1) User calls session endpoint  
+2) Backend prepares runtime instance  
+3) Instance exposes display via VNC  
+4) noVNC bridges VNC → WebSocket  
+5) Browser renders GUI stream
+
+Interaction latency comes from network, not compute availability.
+
+---
+
+## Components
+
+Orchestrator  
+Handles session lifecycle and endpoint exposure
+
+Runtime Environment  
+Temporary graphical Linux session
+
+Streaming Bridge  
+Converts framebuffer updates into browser-readable stream
+
+Client  
+Standard web browser, no installation required
+
+---
+
+## Session Lifecycle
+
+create → connect → interact → dispose
+
+Sessions are intentionally ephemeral.  
+The design models disposable compute rather than persistent machines.
+
+---
+
+## Demo Evidence
+
+Session creation:
 ```md
 ![Create Session](demo/1_create_session.png)
 ```
 
-### 2 — Browser Connection
+Browser connection:
 ```md
 ![Browser Access](demo/2_browser_access.png)
 ```
 
-### 3 — Running GUI Application
+Remote GUI interaction:
 ```md
 ![Running App](demo/3_running_app.png)
 ```
 
 ---
 
-## Running Locally
+## Running
 
-Install dependencies:
+Install dependencies
 
 ```bash
 pip install fastapi uvicorn
 ```
 
-Start server:
+Start service
 
 ```bash
 uvicorn main:app --reload
 ```
 
-Open browser:
+Open
 
-```
 http://localhost:8000
-```
 
-Trigger session endpoint and connect using the returned port.
-
----
-
-## Design Decisions
-
-This is intentionally minimal.
-
-No authentication  
-No scaling  
-No persistence
-
-Because the goal is to demonstrate **session orchestration mechanics**, not build a full VDI platform.
+Call the session endpoint and connect using returned address.
 
 ---
 
-## Future Work (Conceptual)
+## Design Intent
 
-- multi-user session tracking
-- container cleanup scheduler
-- resource quotas
-- cloud deployment
-- intent-based app selection
+Focus:
+runtime provisioning
+process isolation
+remote rendering
+stateless access
+
+Excluded deliberately:
+authentication
+persistence
+multi-node scheduling
+production security
+
+The objective is to prove execution redirection, not build a hosted product.
 
 ---
 
-## What To Look For
+## Limitations
 
-Focus on:
-- lifecycle control
-- port allocation logic
-- isolation model
-- streaming approach
+Single host execution  
+No resource quotas  
+Manual cleanup  
+No failure recovery  
+Not safe for untrusted users
 
-This repository represents the foundation layer of a remote application execution platform.
+---
+
+## Possible Extensions
+
+container scheduling
+session TTL cleanup
+GPU forwarding
+application presets
+cloud worker nodes
+
+---
+
+## Why It Matters
+
+The machine running software no longer needs to be the machine the user owns.
+
+This is the foundation behind remote development environments and zero-install applications.
+
+---
+
+## Author
+
+Jayakumar M
+Computer Science Engineering
+Focus: Systems, Runtime Infrastructure, Cloud Execution Models
