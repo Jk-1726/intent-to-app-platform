@@ -81,7 +81,7 @@ Browser connection:
 
 Remote GUI interaction:
 
-![Running App]()
+![Running App](https://github.com/Jk-1726/intent-to-app-platform/blob/115aef45cac8e0660b8a9333d2400bd67acb2e1b/container-running.png.png)
 
 
 ---
