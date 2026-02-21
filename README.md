@@ -72,7 +72,7 @@ The design models disposable compute rather than persistent machines.
 
 Session creation:
 ```md
-![Create Session](https://github.com/Jk-1726/intent-to-app-platform/blob/ea7c408beac13ff8816013972ce5f037ca196bc7/session-created.png.png)
+![image alt](https://github.com/Jk-1726/intent-to-app-platform/blob/fe9316d9614ad951f3da1724133ad59665bbb18b/session-created.png.png)
 ```
 
 Browser connection:
